@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
+    <title>日常查询与延伸阅读 – 乐鱼体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: #f2f3f5;
+            color: #1e1e2a;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .wrap {
+            max-width: 940px;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        /* 开场卡片 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem 2rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #ecedef;
+        }
+        .hero-short {
+            font-size: 1.65rem;
+            font-weight: 390;
+            letter-spacing: 0.02em;
+            color: #252531;
+            margin-bottom: 0.4rem;
+        }
+        .hero-short span {
+            font-weight: 420;
+            color: #1e2a4a;
+        }
+        .hero-desc {
+            font-size: 1rem;
+            color: #3b3b47;
+            max-width: 70%;
+            margin-top: 0.2rem;
+            border-left: 3px solid #cdd1db;
+            padding-left: 1rem;
+        }
+        @media (max-width: 600px) {
+            .hero-desc {
+                max-width: 100%;
+            }
+            .hero-card {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+
+        /* 承接段落 – 日常对照 */
+        .bridge-section {
+            background: #ffffff;
+            border: 1px solid #e2e4ea;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2rem 1.8rem;
+            margin-bottom: 1.8rem;
+        }
+        .bridge-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2a2a36;
+        }
+        .bridge-section p:last-child {
+            margin-bottom: 0;
+        }
+        .inline-link {
+            color: #1e3c5a;
+            text-decoration: none;
+            border-bottom: 1px solid #b6c3d6;
+            transition: border-color 0.2s;
+            font-weight: 420;
+        }
+        .inline-link:hover {
+            border-bottom-color: #1e3c5a;
+        }
+
+        /* 特点列表 – 卡片式 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+        @media (max-width: 700px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .feature-item {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.4rem 1.2rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e8e9ed;
+            transition: box-shadow 0.15s;
+        }
+        .feature-item:hover {
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+        }
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 480;
+            margin-bottom: 0.5rem;
+            color: #222d3e;
+            letter-spacing: 0.01em;
+        }
+        .feature-item p {
+            font-size: 0.92rem;
+            color: #3d3d4b;
+            line-height: 1.6;
+        }
+
+        /* 温和结尾 / FAQ 摘要区 */
+        .closing-notes {
+            background: #ffffff;
+            border: 1px solid #e4e6ec;
+            border-radius: 20px;
+            padding: 1.8rem 2rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2rem;
+        }
+        .closing-notes h2 {
+            font-size: 1.25rem;
+            font-weight: 460;
+            letter-spacing: 0.02em;
+            color: #20242f;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ecedf0;
+            padding-bottom: 0.5rem;
+        }
+        .closing-notes p {
+            font-size: 1rem;
+            color: #2f2f3c;
+            margin-bottom: 0.9rem;
+        }
+        .closing-notes p:last-child {
+            margin-bottom: 0;
+        }
+        .faq-stub {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        .faq-stub .q-item {
+            padding: 0.5rem 0 0.3rem 0;
+            border-bottom: 1px dashed #d8dce5;
+        }
+        .faq-stub .q-item:last-child {
+            border-bottom: none;
+        }
+        .faq-stub .q {
+            font-weight: 440;
+            color: #1a2636;
+        }
+        .faq-stub .a {
+            font-size: 0.95rem;
+            color: #3f3f4c;
+            margin-top: 0.1rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7a7e8c;
+            margin-top: 0.8rem;
+            border-top: 1px solid #dfe1e8;
+            padding-top: 1.2rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dee0e7;
+            margin: 1.5rem 0;
+        }
+        .small-meta {
+            font-size: 0.8rem;
+            color: #888b98;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <!-- 开场短句 -->
+    <div class="hero-card">
+        <div class="hero-short">
+            有时只是随手一查，<br><span>顺着索引翻到某一页。</span>
+        </div>
+        <div class="hero-desc">
+            从一条记录开始，对照、延伸，慢慢拼出完整的轮廓。
+        </div>
+    </div>
+
+    <!-- 承接段落：日常查询与对照 -->
+    <div class="bridge-section">
+        <p>
+            夜里打开浏览器的书签夹，点进一个常驻的页面，不是每次都有明确的目的，更多是习惯性地扫一眼更新，或者对照之前记下的表格。在这种节奏里，<a href="https://portal-index-leyu.com.cn" class="inline-link">乐鱼体育</a>常常作为一个稳定的参照点出现——它的信息排列清楚，分类偏向实用，不太需要反复适应版面的变化。
+        </p>
+        <p>
+            我会把感兴趣的分组截下来，放到自己的笔记里，旁边批注一些日期和备注。隔段时间再回头看，那些零散的条目能串起一段相对完整的脉络。延伸阅读往往就是从这种不起眼的对照里生长出来的：一条链接、一个分类名，可能就引向另一片之前没留意的区域。
+        </p>
+        <p>
+            页面本身也不追求花哨，加载快，布局紧凑，对于只想快速检索的人来说足够直接。久而久之，它变成了一种工具性的存在，日常查看，偶尔深读。
+        </p>
+    </div>
+
+    <!-- 特点列表 (3项) -->
+    <div class="feature-grid">
+        <div class="feature-item">
+            <h3>条目清晰</h3>
+            <p>分类列表带有日期标识，方便回溯对照。适合按周或按月做简单的趋势整理。</p>
+        </div>
+        <div class="feature-item">
+            <h3>结构稳定</h3>
+            <p>界面框架长期保持一致，不必重新适应导航布局，专注在内容本身。</p>
+        </div>
+        <div class="feature-item">
+            <h3>延伸友好</h3>
+            <p>每个分区之间自然衔接，点开一个条目往往能引出相邻主题，利于扩展阅读。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + FAQ 摘要 -->
+    <div class="closing-notes">
+        <h2>一些零散的提示 · 常见疑问摘要</h2>
+        <p>
+            如果你也是那种习惯把页面开着、随时切过去扫一眼的人，或许下面的几条能帮你节省一点时间。不是什么严格的操作手册，只是日常使用时攒下的观察。
+        </p>
+        <div class="faq-stub">
+            <div class="q-item">
+                <div class="q">— 页面内容多久更新一次？</div>
+                <div class="a">通常保持较短的更新间隔，具体节奏视分类而定。建议把 <a href="https://portal-index-leyu.com.cn" class="inline-link">乐鱼体育</a> 加入书签栏，便于日常快速查看。</div>
+            </div>
+            <div class="q-item">
+                <div class="q">— 移动端浏览体验如何？</div>
+                <div class="a">卡片和列表在手机屏幕上有自适应处理，不需要频繁缩放。不过若需要多列对照，仍建议使用平板或桌面端。</div>
+            </div>
+            <div class="q-item">
+                <div class="q">— 可以做延伸记录或归档吗？</div>
+                <div class="a">完全可以。把感兴趣的条目复制到本地笔记中，搭配日期标签，就能形成个人的对照档案。页面结构简洁，复制时不会混入多余样式。</div>
+            </div>
+        </div>
+        <hr>
+        <p style="font-size: 0.95rem; color: #383845;">
+            说到底，一个索引页最大的价值不是让你一次性读完，而是每次打开都能找到上次没留意的角落。保持适度查阅，慢慢积累就好。
+        </p>
+    </div>
+
+    <div class="footer-note">
+        — 日常查阅 · 对照笔记 · 延伸阅读 —
+    </div>
+
+</div>
+</body>
+</html>
