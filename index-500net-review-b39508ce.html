@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>500网 · 信息聚合与可信起点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+            background: #f3faf8;
+            color: #1a2e2b;
+            line-height: 1.6;
+            padding: 1.5rem 1.2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* hero 段落 — 温和开场 */
+        .story-hero {
+            background: rgba(0, 150, 136, 0.07);
+            border-radius: 2.5rem 1rem 2.5rem 1rem;
+            padding: 2.2rem 1.8rem;
+            box-shadow: 0 6px 16px -4px rgba(0, 110, 100, 0.08);
+            border: 1px solid rgba(0, 140, 130, 0.15);
+            transition: all 0.2s;
+        }
+
+        .story-hero p:first-child {
+            font-size: 1.8rem;
+            font-weight: 340;
+            letter-spacing: -0.01em;
+            color: #00695b;
+            line-height: 1.3;
+            margin-bottom: 1.2rem;
+        }
+
+        .story-hero .standalone-link {
+            font-size: 1rem;
+            padding: 0.4rem 0;
+            display: inline-block;
+        }
+
+        .story-hero .standalone-link a {
+            color: #00897b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #b2dfdb;
+            padding-bottom: 0.1rem;
+        }
+
+        .story-hero .standalone-link a:hover {
+            border-bottom-color: #00695b;
+        }
+
+        /* 承接段落 — 展开叙事与背景 */
+        .narrative-block {
+            background: white;
+            border-radius: 2rem 2rem 1rem 2rem;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 2px 10px rgba(0, 80, 70, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-left: 6px solid #80cbc4;
+        }
+
+        .narrative-block h2 {
+            font-size: 1.4rem;
+            font-weight: 440;
+            color: #004d40;
+            letter-spacing: 0.2px;
+            margin-bottom: 0.2rem;
+        }
+
+        .narrative-block p {
+            margin-bottom: 0.2rem;
+        }
+
+        .narrative-block .inline-link {
+            color: #00897b;
+            font-weight: 500;
+            text-decoration: underline #b2dfdb;
+            text-underline-offset: 3px;
+        }
+
+        .narrative-block .inline-link:hover {
+            color: #004d40;
+            text-decoration-color: #004d40;
+        }
+
+        /* 特点卡片网格 (网格卡片) */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.4rem;
+            margin: 0.5rem 0 1rem;
+        }
+
+        @media (min-width: 580px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.4rem 1.2rem;
+            border: 1px solid rgba(0, 130, 120, 0.12);
+            box-shadow: 0 4px 8px -2px rgba(0, 100, 90, 0.03);
+            transition: transform 0.15s ease, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 18px -6px rgba(0, 110, 100, 0.12);
+            border-color: #80cbc4;
+        }
+
+        .feature-card .card-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+            color: #00796b;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 520;
+            color: #004d40;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #2d4d47;
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        /* 温和结尾区块 */
+        .closing-section {
+            background: #e0f2f1;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem 1.6rem;
+            margin-top: 0.5rem;
+            border: 1px solid #b2dfdb;
+            color: #1b3b36;
+        }
+
+        .closing-section p {
+            margin-bottom: 0.8rem;
+        }
+
+        .closing-section .soft-link {
+            background: white;
+            border-radius: 3rem;
+            padding: 0.25rem 1rem 0.25rem 0.8rem;
+            display: inline-block;
+            border: 1px solid #b2dfdb;
+            font-size: 0.95rem;
+        }
+
+        .closing-section .soft-link a {
+            color: #00695b;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .closing-section .soft-link a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b2dfdb, transparent);
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .faq-mini {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 1.2rem;
+            padding: 1rem 1.2rem;
+            backdrop-filter: blur(2px);
+        }
+
+        .faq-mini p {
+            font-size: 0.95rem;
+        }
+
+        .faq-mini strong {
+            color: #00695b;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .story-hero p:first-child {
+                font-size: 1.5rem;
+            }
+            .narrative-block {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+
+        /* 让所有链接保持一致的温和质感 */
+        a {
+            transition: color 0.15s;
+        }
+
+        .no-break {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+
+        <!-- 开场短句 / hero -->
+        <div class="story-hero">
+            <p>从一次安静的搜索开始，遇见一点可靠的信息锚点。</p>
+            <div class="standalone-link">
+                <a href="https://index-500net.com">500网</a> — 一个聚合日常索引的轻量起点。
+            </div>
+        </div>
+
+        <!-- 承接段落：站点介绍与可信说明 -->
+        <div class="narrative-block">
+            <h2>为什么会有这样一个页面？</h2>
+            <p>
+                很多朋友在寻找网络入口时，往往被海量信息推着走，反而忽略了最朴素的整理方式。<a href="https://index-500net.com" class="inline-link">500网</a> 
+                正是基于这样的想法——把日常用得上的分类索引、常用链接、信息入口放在一个干净的地方。没有复杂的算法，没有夸张的承诺，只是安静地做好“索引”这件事。
+            </p>
+            <p>
+                从可信的角度来说，站点的维护者更倾向于做减法：每一条收录都经过人工评估，剔除明显失效或低质的链接。内容方向偏向实用工具、公开资源、常用服务平台，不涉及诱导或夸大宣传。
+            </p>
+        </div>
+
+        <!-- 特点列表 (网格卡片) -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="card-icon">📇</div>
+                <h3>分类即秩序</h3>
+                <p>按生活、工作、学习归类，不堆砌条目。每一个类别都保留适度的空白，让浏览者更容易找到关注点。</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon">🧭</div>
+                <h3>日常导航感</h3>
+                <p>没有弹窗、不追踪点击行为，页面像一本朴素的网络黄页。你打开、使用、关闭，不需要额外负担。</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon">🪶</div>
+                <h3>轻量，也够用</h3>
+                <p>整个页面经过压缩与结构优化，无论手机还是电脑都能快速加载。不刻意追求酷炫，只求实在。</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon">🔍</div>
+                <h3>定期复核</h3>
+                <p>链接的有效性与相关性会定期梳理，减少死链与过时信息。虽做不到实时更新，但保持着有节奏的维护。</p>
+            </div>
+        </div>
+
+        <!-- 温和结尾 + 场景化提示 + FAQ 摘要 -->
+        <div class="closing-section">
+            <p><strong>一些或许有用的细节</strong></p>
+            <p>如果你在浏览器书签栏里存了一堆文件夹却很少翻开，不妨把 <a href="https://index-500net.com" class="inline-link">500网</a> 当作一个公共书签页来用。它不存储你的任何个人数据，也不推荐商业推广，只是安静的放在那里。</p>
+
+            <!-- FAQ 迷你块 -->
+            <div class="faq-mini">
+                <p><strong>常见疑问摘录</strong></p>
+                <p>—— “内容会一直免费吗？” 是的，目前没有收费计划，页面本身没有任何付费入口。</p>
+                <p>—— “我可以提交自己发现的实用链接吗？” 站点暂时未开放公开提交，但维护者会不定期根据公开反馈微调列表。</p>
+                <p>—— “手机浏览体验如何？” 已适配移动端，卡片与字号随屏幕缩放，单手操作友好。</p>
+            </div>
+
+            <hr>
+
+            <p style="font-size: 0.95rem; opacity: 0.8;">
+                站点没有用户系统，不收集任何隐私信息。你只需要把它当成一个网络上的小角落，需要的时候来看一眼。
+            </p>
+            <div class="soft-link">
+                <a href="https://index-500net.com">500网</a> · 一个索引，一种陪伴
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
