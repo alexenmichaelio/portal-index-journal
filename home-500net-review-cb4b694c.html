@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500网 · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #fce5d7 0%, #f8d5c1 40%, #f0c7ab 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem 3rem;
+            color: #2d1f17;
+            line-height: 1.6;
+        }
+        .page-wrapper {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* 白色卡片容器 */
+        .card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(2px);
+            border-radius: 40px 40px 40px 40px;
+            box-shadow: 0 12px 30px rgba(125, 65, 30, 0.12), 0 4px 12px rgba(0,0,0,0.04);
+            padding: 2.8rem 2.5rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
+        /* hero 区 */
+        .hero {
+            padding: 3.2rem 2.5rem 2.8rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #3a241b;
+            margin-bottom: 0.6rem;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #b76e3c, #8f4f2a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #5a3f32;
+            max-width: 620px;
+            margin: 0.8rem auto 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* 按钮感链接 */
+        .btn-link {
+            display: inline-block;
+            background: #e5c3ab;
+            color: #2d1f16;
+            border-radius: 60px;
+            padding: 0.45rem 1.4rem;
+            font-weight: 500;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 2px 6px rgba(100, 50, 20, 0.08);
+            margin: 0.2rem 0.3rem;
+        }
+        .btn-link:hover {
+            background: #dbb697;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(100, 50, 20, 0.12);
+        }
+        .btn-link:active {
+            transform: scale(0.97);
+        }
+
+        /* section 头部 */
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #3d281e;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid #ebcfba;
+            padding-bottom: 0.25rem;
+            display: inline-block;
+        }
+
+        /* 两列/三列柔性 */
+        .grid-2, .grid-3 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-top: 0.6rem;
+        }
+        .grid-2 > div {
+            flex: 1 1 240px;
+            min-width: 200px;
+        }
+        .grid-3 > div {
+            flex: 1 1 180px;
+            min-width: 150px;
+        }
+
+        .feature-item {
+            background: rgba(255, 245, 235, 0.6);
+            border-radius: 28px;
+            padding: 1.2rem 1.2rem 1rem;
+            border: 1px solid #edd9ca;
+        }
+        .feature-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #4d3225;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4f382b;
+        }
+
+        /* 说明区文字 */
+        .desc-text {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .desc-text strong {
+            color: #7b4b2e;
+        }
+        .faq-summary {
+            list-style: none;
+            margin-top: 0.6rem;
+        }
+        .faq-summary li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .faq-summary li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #b57953;
+        }
+        .faq-summary li strong {
+            display: inline-block;
+            margin-right: 0.3rem;
+            color: #4a3125;
+        }
+
+        .footnote {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #4e392e;
+            padding: 0.8rem 0 0;
+        }
+        .footnote a {
+            color: #5e3c2b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+        .footnote a:hover {
+            color: #8a552f;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 700px) {
+            body { padding: 1.2rem 1rem; }
+            .card { padding: 1.8rem 1.5rem; border-radius: 32px; }
+            .hero { padding: 2.2rem 1rem 1.8rem; }
+            .hero h1 { font-size: 2.6rem; }
+            .grid-2, .grid-3 { gap: 1.2rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .card { padding: 1.4rem 1rem; }
+            .btn-link { padding: 0.35rem 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- hero 区 -->
+    <div class="card hero">
+        <h1>稳定入口 · <span>500网</span></h1>
+        <p class="sub">访问路径清晰、结构可预期的页面说明，帮助用户快速理解场景与定位。<br>一份简洁的索引，而非复杂的跳板。</p>
+        <div style="margin-top: 1.2rem;">
+            <a href="https://home-500net.com" class="btn-link">500网</a>
+        </div>
+    </div>
+
+    <!-- 优势区：卡片网格 -->
+    <div class="card">
+        <h2>结构优势</h2>
+        <div class="grid-2">
+            <div class="feature-item">
+                <h3>直达索引</h3>
+                <p>页面说明聚焦于功能入口本身，减少中间层级，访问者能更快判断是否符合需要。</p>
+            </div>
+            <div class="feature-item">
+                <h3>低噪点设计</h3>
+                <p>信息密度经过筛选，核心内容优先呈现。视觉上使用暖色渐变与柔和卡片，降低认知负荷。</p>
+            </div>
+            <div class="feature-item">
+                <h3>场景适配</h3>
+                <p>从稳定访问的角度梳理常见问题与预期行为，使初次接触者也能获得大致框架。</p>
+            </div>
+            <div class="feature-item">
+                <h3>说明先行</h3>
+                <p>每项内容附带简要描述，避免仅罗列链接。透明化的介绍有助于形成合理预期。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区 + 场景 -->
+    <div class="card">
+        <h2>说明与适用场景</h2>
+        <div class="desc-text">
+            <p><strong>500网</strong> 提供指向某个功能集合的稳定入口。页面本身不承担复杂交互，而是作为引导与信息参考。适合以下情况：</p>
+        </div>
+        <div class="grid-3">
+            <div>
+                <p style="font-weight:600; color:#4d3225;">快速确认</p>
+                <p style="font-size:0.95rem;">通过标题与摘要了解页面定位，无需多次跳转。</p>
+            </div>
+            <div>
+                <p style="font-weight:600; color:#4d3225;">FAQ 摘要</p>
+                <p style="font-size:0.95rem;">常见疑问集中展示，减少反复沟通成本。</p>
+            </div>
+            <div>
+                <p style="font-weight:600; color:#4d3225;">路径提示</p>
+                <p style="font-size:0.95rem;">说明页面结构及后续可能的操作方向，而非直接要求行动。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 + 底部链接 -->
+    <div class="card">
+        <h2>FAQ 摘要</h2>
+        <ul class="faq-summary">
+            <li><strong>Q：</strong>这个页面是做什么的？<br>提供指向 <a href="https://home-500net.com" style="color:#7b4b2e;text-decoration:underline;font-weight:500;">500网</a> 的稳定入口以及简要的功能说明，方便访问者快速理解。</li>
+            <li><strong>Q：</strong>内容是否保持更新？<br>页面说明基于当前版本整理，后续会随场景变化调整描述，确保信息准确。</li>
+            <li><strong>Q：</strong>为什么没有大量链接？<br>本页侧重“说明与索引”，而非导航聚合。核心入口已明确放置，其余信息以文字呈现。</li>
+            <li><strong>Q：</strong>移动端显示效果如何？<br>采用响应式设计，暖色卡片在窄屏下自动调整间距，阅读体验一致。</li>
+        </ul>
+    </div>
+
+    <!-- 底部链接区 -->
+    <div class="footnote">
+        <p>主要入口：<a href="https://home-500net.com">500网</a> · 页面说明版本 2025.04</p>
+        <p style="margin-top:0.5rem; font-size:0.85rem; opacity:0.7;">基于稳定访问与清晰索引构建 · 暖色渐变卡片布局</p>
+    </div>
+
+</div>
+</body>
+</html>
